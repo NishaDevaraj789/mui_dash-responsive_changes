@@ -24,12 +24,12 @@ function AboutView() {
           component="div"
           variant="body"
         >
-          theDigitalworkers is a complete suite of solutions, empowered by
-          Robotic Process Automation(RPA) which provides a platform for
-          organisations to identify the processes to automate. theDigitalworkers
-          builds an end-to-end solutions by stitching together automated digital
-          workers to ensure the organisations are saving costs and are getting
-          the best of their RPA investment.
+         At VideoSrch, our mission is to empower individuals, businesses, and
+        organizations to harness the potential of their video content. We
+        believe that every video holds valuable information, and we're here to
+        help you unlock it. Whether you're a content creator, educator, or
+        business professional, VideoSrch is your trusted partner in managing,
+        processing, and searching through videos.
         </Typography>
         <Typography
           sx={{

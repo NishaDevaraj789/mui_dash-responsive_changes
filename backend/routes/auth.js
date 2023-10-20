@@ -33,7 +33,7 @@ router.post("/signup", async (req, res, next) => {
 
   try {
     const createdUser = await add(data);
-    const authToken = createJSONToken(createdUser.email, createdUser.firstName, createdUser.id);
+    const authToken = createJSONToken(createdUser.email, createdUser.firstName, data.lastName, createdUser.id);
     res
       .status(201)
       .json({
@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
     });
   }
 
-  const token = createJSONToken(email, user.firstName, user.id);
+  const token = createJSONToken(email, user.firstName, user.lastName, user.id);
   res.json({ token });
 });
 

@@ -4,8 +4,8 @@ const { NotAuthError } = require('./errors');
 
 const KEY = 'supersecret';
 
-function createJSONToken(email, name, id) {
-  return sign({ email, name, id }, KEY, { expiresIn: '1h' });
+function createJSONToken(email, fname, lname, id) {
+  return sign({ email, fname, lname, id }, KEY, { expiresIn: '1h' });
 }
 
 function validateJSONToken(token) {

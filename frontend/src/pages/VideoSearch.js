@@ -5,8 +5,9 @@ import MediaUploadStepper from "../components/MediaUploadStepper";
 function VideoSearch() {
   return (
     <>
-      <Breadcrums title="Video Search" />
+      {/* <Breadcrums title="Video Search" /> */}
       <MediaUploadStepper />
+      {/* <MediaUploadZone/> */}
     </>
   );
 }

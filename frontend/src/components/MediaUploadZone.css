@@ -1,7 +1,7 @@
 .media-upload {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
   /* padding: 20px; */
 }
 
@@ -9,12 +9,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4%;
-  padding: 20px;
+  margin-top: 2%;
+  padding: 10px;
   border-radius: 10px;
   border: 1px dashed #3498db; /* A vibrant blue color for the border */
   background-color: #f1f2f6; /* A light gray background color */
-  color: #34495e; /* A dark gray text color */
+  color: #34495e; /* A dark gray tesxt color */
   transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
   width: 100%;
   /* max-width: 600px; */
@@ -24,7 +24,7 @@
 
 .drop-zone p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #666;
 }
 
@@ -35,19 +35,25 @@
 
 .file-list {
   margin: 10px;
-  max-height: 300px; /* Set the desired max height for the table body */
+  max-height: 245px; /* Set the desired max height for the table body */
   overflow-y: auto;
+}
+.table-container {
+  max-height: 200px; /* Set the desired max height for the table container */
+  overflow: auto; /* Enable scrolling on the container */
 }
 
 table {
   width: 100%;
-  margin-top: 20px;
+  /* height:25%; */
+  margin-top: 0px;
   color: #000;
   background-color: #e8ebec;
+  border-collapse: collapse; /* Prevent border spacing */
 }
 
 .fixed-cell {
-  width: 200px; /* Adjust the width as needed */
+  width: 150px; /* Adjust the width as needed */
   max-width: 200px; /* Set a maximum width to prevent excessive expansion */
   overflow: hidden;
   white-space: nowrap;
@@ -65,16 +71,28 @@ td {
 }
 
 th {
-  font-size: 15px;
-  text-align: center;
+  border-style: 1px solid;
+  /* border-color: #000; */
+  padding: 10px;
+  position: sticky;
+  top: 0; /* Stick to the top of the container */
+  background-color: #e8ebec;
+  z-index: 1; /* Ensure it appears above the other content */
+  color: #34495e;
+}
+
+/* Add scrollbar to the table body */
+.table-container table tbody {
+  max-height: 200px; /* Set a max height for the table body */
+  overflow: auto; /* Enable scrolling in the table body */
 }
 
 .preview-button {
   background-color: #f0f0f0;
-  border: 1px solid #4caf50;
+  border: 1px solid #4c61af;
   cursor: pointer;
-  color: #2e7d32;
-  padding: 6px;
+  color: #2e547d;
+  padding: 1px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
@@ -82,6 +100,7 @@ th {
 .preview-button:hover {
   background-color: #e0e0e0;
 }
+
 
 .close-button {
   position: absolute;
@@ -146,4 +165,6 @@ th {
     padding: 3vw; /* Adjust padding for smaller screens */
     font-size: 1.8vw; /* Adjust font size for smaller screens */
   }
+
+  
 }

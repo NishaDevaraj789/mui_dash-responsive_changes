@@ -1,115 +1,254 @@
 import React from "react";
-import { Typography, Tooltip, Card, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
+import {
+  Typography,
+  Tooltip,
+  Card,
+  Grid,
+  Stack,
+  CardHeader,
+  CardContent,
+  Box,
+} from "@mui/material";
+import BarsDataset from "../components/charts/BarChart";
+import PieActiveArc from "../components/charts/PieChart";
+import Title from "../components/Title";
+import BasicLineChart from "../components/charts/LineChart";
+import PieChartWithCustomizedLabel from "../components/charts/PieChartLabled";
 
 function Dashboard() {
-  const gradient1 = "linear-gradient(135deg, #f25022, #FF5733)";
-  const gradient2 = "linear-gradient(135deg, #00FF00, #33FF77)";
-  const gradient3 = "linear-gradient(135deg, #0074cc, #33a6e2)";
-
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={4}>
-        <Tooltip title="No of Queries" arrow placement="top">
-          <Card
-            sx={{
-              backgroundImage: gradient1,
-              color: "#fff",
-              padding: "16px",
-              borderRadius: "10px",
-              textAlign: "center",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              transition: "transform 0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-              height: "100px", // Set the height to 100 pixels
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end", // Align content to the end
-              background: "rgba(255, 215, 0, 0.5)", // Semi-transparent background
+    <Grid container spacing={4}>
+      <Grid item xs={12} md={3}>
+        {/* card1 */}
+      <Card  
+        variant="outlined"
+        style={{
+          backgroundColor: "#FFFFFF", // White background
+          borderTop: "4px solid #48CFAD", // Top border in green
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          borderRadius: "8px", // Rounded corners
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="subtitle2"
+            style={{
+              color: "#333", // Dark gray title color
+              fontSize: "18px",
             }}
           >
-            <Link to="/card1" style={{ textDecoration: "none", color: "inherit" }}>
-              <Typography variant="h6" style={{ fontWeight: "bold", fontSize: "12px" }}> {/* Smaller word size */}
-                No of Queries
-              </Typography>
-            </Link>
-            <Typography variant="body2" style={{ fontSize: "18px", fontWeight: "bold" }}>
-              1234
+            No of queries
+          </Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+            <Typography
+              variant="h4"
+              style={{
+                color: "#48CFAD", // green
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              10,011
             </Typography>
-            <MailOutlineIcon color="primary" style={{ fontSize: "30px" }} />
-          </Card>
-        </Tooltip>
+          </Box>
+        </CardContent>
+      </Card>
+      {/* card2 */}
+      </Grid>
+      <Grid item xs={12} md={3}>
+      <Card
+        variant="outlined"
+        style={{
+          backgroundColor: "#FFFFFF", // White background
+          borderTop: "4px solid #FED730", // Top border in yellow
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          borderRadius: "8px", // Rounded corners
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="subtitle2"
+            style={{
+              color: "#333", // Dark gray title color
+              fontSize: "18px",
+            }}
+          >
+            No. of queries answered
+          </Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+            <Typography
+              variant="h4"
+              style={{
+                color: "#FED330", // Dark yellow
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              9899
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+      {/* card3 */}
+      </Grid>
+      <Grid item xs={12} md={3}>
+      <Card
+        variant="outlined"
+        style={{
+          backgroundColor: "#FFFFFF", // White background
+          borderTop: "4px solid #FA8231", // Top border in orange
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          borderRadius: "8px", // Rounded corners
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="subtitle2"
+            style={{
+              color: "#333", // Dark gray title color
+              fontSize: "18px",
+            }}
+          >
+            No. of queries unanswered
+          </Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+            <Typography
+              variant="h4"
+              style={{
+                color: "#FA8231", // orange
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              221
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+      </Grid>
+      {/* card4 */}
+      <Grid item xs={12} md={3}>
+      <Card
+        variant="outlined"
+        style={{
+          backgroundColor: "#FFFFFF", // White background
+          borderTop: "4px solid #4FC1E9", // Top border in Dark Royal Blue
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+          borderRadius: "8px", // Rounded corners
+          transition: "transform 0.2s",
+          "&:hover": {
+            transform: "scale(1.05)", }// Zoom-in effect on hover
+        }}
+      >
+        <CardContent>
+          <Typography
+            variant="subtitle2"
+            style={{
+              color: "#333", // Dark gray title color
+              fontSize: "18px",
+            }}
+          >
+            Videos Uploaded
+          </Typography>
+          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+            <Typography
+              variant="h4"
+              style={{
+                color: "#4FC1E9", // Dark Royal Blue number color
+                fontSize: "32px",
+                fontWeight: "bold",
+              }}
+            >
+              789
+            </Typography>
+          </Box>
+        </CardContent>
+      </Card>
+    </Grid>
+      {/* <Grid item xs={12} md={3}>
+        <Card>
+          <CardHeader title="No. of queries answered" subheader="989" />
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={3}>
+        <Card>
+          <CardHeader
+            title="No. of queries unanswered "
+            subheader="Subtitle or additional information"
+          />
+        </Card>
+      </Grid>
+
+      <Grid item xs={12} md={3}>
+        <Card>
+          <CardHeader
+            title="No. of queries unanswered "
+            subheader="Subtitle or additional information"
+          />
+        </Card>
+      </Grid> */}
+
+
+      {/* graphs starts */}
+      <Grid item xs={12} sm={8}>
+        <Card
+          sx={{
+            padding: "16px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          <Title color="primary">Top cities</Title>
+          <BarsDataset />
+        </Card>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <Tooltip title="No of Queries Answered" arrow placement="top">
-          <Card
-            sx={{
-              backgroundImage: gradient2,
-              color: "#fff",
-              padding: "16px",
-              borderRadius: "10px",
-              textAlign: "center",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              transition: "transform 0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-              height: "100px", // Set the height to 100 pixels
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end", // Align content to the end
-              background: "rgba(0, 255, 0, 0.5)", // Semi-transparent background
-            }}
-          >
-            <Link to="/card2" style={{ textDecoration: "none", color: "inherit" }}>
-              <Typography variant="h6" style={{ fontWeight: "bold", fontSize: "12px" }}>
-                No of Queries Answered
-              </Typography>
-            </Link>
-            <Typography variant="body2" style={{ fontSize: "18px", fontWeight: "bold" }}>
-              5678
-            </Typography>
-            <CheckCircleIcon color="success" style={{ fontSize: "30px" }} />
-          </Card>
-        </Tooltip>
+        <Card
+          sx={{
+            padding: "16px",
+            borderRadius: "10px",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          <Title color="primary">Grouped</Title>
+          <PieChartWithCustomizedLabel />
+        </Card>
       </Grid>
-      <Grid item xs={12} sm={4}>
-        <Tooltip title="No of Queries Unanswered" arrow placement="top">
-          <Card
-            sx={{
-              backgroundImage: gradient3,
-              color: "#fff",
-              padding: "16px",
-              borderRadius: "10px",
-              textAlign: "center",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              transition: "transform 0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-              height: "100px", // Set the height to 100 pixels
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end", // Align content to the end
-              background: "rgba(0, 116, 204, 0.5)", // Semi-transparent background
-            }}
-          >
-            <Link to="/card3" style={{ textDecoration: "none", color: "inherit" }}>
-              <Typography variant="h6" style={{ fontWeight: "bold", fontSize: "12px" }}>
-                No of Queries Unanswered
-              </Typography>
-            </Link>
-            <Typography variant="body2" style={{ fontSize: "18px", fontWeight: "bold" }}>
-              9876
-            </Typography>
-            <CancelIcon color="error" style={{ fontSize: "30px" }} />
-          </Card>
-        </Tooltip>
+
+      <Grid item xs={12} sm={6}>
+        <Card
+          sx={{
+            padding: "16px",
+            borderRadius: "10px",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          <Title color="primary">Series</Title>
+          <PieActiveArc />
+        </Card>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <Card
+          sx={{
+            padding: "16px",
+            borderRadius: "10px",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          <Title color="primary">Flow</Title>
+          <BasicLineChart />
+        </Card>
       </Grid>
     </Grid>
   );

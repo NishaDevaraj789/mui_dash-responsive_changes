@@ -148,3 +148,7 @@ a.active {
     width: 17% !important;
   }
 }
+
+.css-1y4v7ra-MuiCardContent-root:last-child {
+  padding-bottom: 0 !important;
+}

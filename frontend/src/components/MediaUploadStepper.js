@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import MediaUploadZone from "./MediaUploadZone";
 
-const steps = ["Select / Preview", "Upload", "Search in Video"];
+const steps = ["Select / Preview", "Upload"];
 
 export default function MediaUploadStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -46,11 +46,14 @@ export default function MediaUploadStepper() {
         p: 2,
         mb: 2,
         width: "100%",
+        height:"570px",
+        // position:"absolute",
         backgroundColor: "white",
         borderRadius: "10px",
         boxSizing: "border-box",
         boxShadow: "0px 0px 10px silver",
-      }}
+        // overflow:"-moz-hidden-unscrollable"
+     }}
     >
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
@@ -89,14 +92,20 @@ export default function MediaUploadStepper() {
             >
               Reset
             </Button>
-            <Box sx={{ flex: "1 1 auto" }} />
+            <Box 
+            
+            sx={{
+               // Align children to the right
+              flex: "1 1 auto",
+              ml: 1 ,
+            }}/>
 
             {activeStep === 0 ? (
-              <Button onClick={handleNext} disabled={!hasFile}>
+              <Button onClick={handleNext} sx={{ mr: 1 }} disabled={!hasFile} >
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             ) : (
-              <Button onClick={handleNext} disabled={!isUploaded}>
+              <Button onClick={handleNext}   disabled={!isUploaded}>
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             )}

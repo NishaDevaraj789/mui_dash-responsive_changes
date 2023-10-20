@@ -13,22 +13,41 @@ import FileList from "./FileList";
 import CardActions from "@mui/material/CardActions";
 import SimpleBackdrop from "./SimpleBackdrop";
 import SimpleSnackbar from "./SimpleSnackbar";
+
 const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [previewIndex, setPreviewIndex] = useState(-1);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [isUploaded, setisUploaded] = useState(false);
-  const [isUploading, setisUploading] = useState();
+  const [isUploading, setisUploading] = useState(false);
+  const [selectAllChecked, setSelectAllChecked] = useState(false);
+  const [columnCheckboxes, setColumnCheckboxes] = useState([]);
+
+  const handleSelectAllClick = (event) => {
+    const isChecked = event.target.checked;
+    setSelectAllChecked(isChecked);
+    setColumnCheckboxes(Array(selectedFiles.length).fill(isChecked));
+  };
+
+  const handleCheckboxChange = (event, index) => {
+    const isChecked = event.target.checked;
+    const updatedCheckboxes = [...columnCheckboxes];
+    updatedCheckboxes[index] = isChecked;
+    setColumnCheckboxes(updatedCheckboxes);
+
+    const isColumnChecked = updatedCheckboxes.every((value) => value);
+    setSelectAllChecked(isColumnChecked);
+  };
 
   const handleFileDrop = (event) => {
     event.preventDefault();
-    const newFiles = Array.from(event.dataTransfer.files);
+    const newFiles = Array.from(event.dataTransfer.files); // Fixed typo here
     handleFiles(newFiles);
   };
 
   const handleFileInput = (event) => {
-    const newFiles = Array.from(event.target.files);
+    const newFiles = Array.from(event.target.files); // Fixed typo here
     handleFiles(newFiles);
   };
 
@@ -44,6 +63,8 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
       "audio/wav",
       "video/mp4",
       "video/webm",
+      "video/AVI",
+
     ];
     return mediaTypes.includes(file.type);
   };
@@ -65,6 +86,13 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
     setDeleteConfirmationOpen(true);
   };
 
+  const handleDelete = () => {
+    const updatedFiles = selectedFiles.filter((_, i) => !columnCheckboxes[i]);
+    setSelectedFiles(updatedFiles);
+    setColumnCheckboxes(Array(updatedFiles.length).fill(false));
+    setSelectAllChecked(false);
+    setDeleteConfirmationOpen(false);
+  };
   const handleUpload = async () => {
     setisUploading(true);
     var formdata = new FormData();
@@ -88,22 +116,13 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
 
     if (response.ok) {
       const resData = await response.json();
-      console.log(resData)
+      console.log(resData);
       setisUploading(false);
       setisUploaded(true);
     } else {
       console.log(response);
       setisUploaded(false);
     }
-  };
-
-  const handleConfirmDelete = (index) => {
-    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
-    setSelectedFiles(updatedFiles);
-    if (index === previewIndex) {
-      setPreviewIndex(-1);
-    }
-    setDeleteConfirmationOpen(false);
   };
 
   useEffect(() => {
@@ -141,14 +160,15 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
             onDragOver={(e) => e.preventDefault()}
           >
             <h3>Drag & drop audio or video files here</h3>
-            
             <br />
-            <input
-              type="file"
-              accept="audio/*, video/*"
-              onChange={handleFileInput}
-              multiple
-            />
+            <div>
+              <input
+                type="file"
+                accept="audio/*, video/*"
+                onChange={handleFileInput}
+                multiple
+              />
+            </div>
           </div>
 
           {selectedFiles.length > 0 ? (
@@ -157,17 +177,31 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
                 <table>
                   <thead>
                     <tr>
-                      <th style={{ width: "5%" }}>Sl No</th>
+                      <th style={{ width: "5%" }}>
+                        <input
+                          type="checkbox"
+                          onChange={handleSelectAllClick}
+                          checked={selectAllChecked}
+                        />
+                      </th>
+                      <th style={{ width: "5%" }}>ID</th>
                       <th>File Name</th>
                       <th style={{ width: "15%" }}>File Type</th>
                       <th style={{ width: "12%" }}>Size</th>
                       <th style={{ width: "15%" }}>Modified Date</th>
-                      <th style={{ width: "20%" }}>Action</th>
+                      <th style={{ width: "10%" }}>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedFiles.map((file, index) => (
                       <tr key={index}>
+                        <td>
+                          <input
+                            type="checkbox"
+                            onChange={(e) => handleCheckboxChange(e, index)}
+                            checked={columnCheckboxes[index]}
+                          />
+                        </td>
                         <td>{index + 1}</td>
                         <td className="fixed-cell">{file.name}</td>
                         <td>{file.type}</td>
@@ -179,7 +213,6 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
                             "en-GB"
                           )}
                         </td>
-
                         <td
                           style={{
                             display: "flex",
@@ -194,30 +227,40 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
                           >
                             <PlayArrowIcon />
                           </button>
-                          <button
-                            style={{
-                              cursor: "pointer",
-                              backgroundColor: "#eceff1",
-                              color: "#d50000",
-                              border: "1px solid #d50000",
-                              borderRadius: "5px",
-                            }}
-                            onClick={() => handleDeleteFile(index)}
-                          >
-                            <DeleteIcon />
-                          </button>
+                          {/* <button
+    className="preview-button"
+    style={{
+      cursor: "pointer",
+      backgroundColor: "#eceff1",
+      color: "#d50000",
+      border: "1px solid #d50000",
+      borderRadius: "5px",
+    }}
+    onClick={() => handleDeleteFile(index)}
+  >
+    <DeleteIcon />
+                          </button> */}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleDelete}
+                sx={{marginLeft:"8px"}}
+              >
+                Delete
+              </Button>
               {previewIndex !== -1 && (
                 <VideoPreviewModel
                   files={selectedFiles}
                   previewIndex={previewIndex}
                   close={handleClosePreview}
                 />
+                
               )}
               <Dialog
                 open={deleteConfirmationOpen}
@@ -233,9 +276,7 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={() => handleConfirmDelete(deleteIndex)}>
-                    Confirm
-                  </Button>
+                  <Button onClick={handleDelete}>Confirm</Button>
                   <Button onClick={() => setDeleteConfirmationOpen(false)}>
                     Cancel
                   </Button>
@@ -268,11 +309,10 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
           </CardActions>
         </>
       )}
-
       {stepIndex === 2 && (
         <>
           <p style={{ textAlign: "center", fontWeight: "600" }}>
-            Search feature, Comming Soon ...
+            Search feature, Coming Soon ...
           </p>
           <FileList files={selectedFiles} />
         </>

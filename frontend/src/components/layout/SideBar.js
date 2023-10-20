@@ -7,8 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import List from "@mui/material/List";
-import { CardMedia} from "@mui/material";
-// import video_srch from "../assets/videosrch_logo.png";
+import { CardMedia, Card, CardContent, Grid, Typography } from "@mui/material";
+import videosrch_logo from "../../assets/videosrch_logo.jpg";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -60,17 +60,23 @@ function SideBar(props) {
             px: [1],
           }}
         >
-            {/* <CardMedia
-              component="img"
-              image={}
-              alt="Paella dish"
-              sx={{
-                width: "15%",
-                margin: "auto",
-                paddingTop: "5%",
-                paddingBottom: "2%",
-              }}
-            /> */}
+          <Card variant="outlined" sx={{ border: "none" }}>
+            <CardContent sx={{ padding: "0" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <CardMedia
+                  component="img"
+                  image={videosrch_logo}
+                  sx={{
+                    width: "30%",
+                  }}
+                />
+                <Typography variant="body1" style={{ marginLeft: "8px" }}>
+                  <b>VS</b>
+                </Typography>
+              </div>
+            </CardContent>
+          </Card>
+
           <IconButton onClick={props.toggleDrawer}>
             <ChevronLeftIcon />
           </IconButton>

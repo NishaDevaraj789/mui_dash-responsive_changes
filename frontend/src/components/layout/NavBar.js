@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import digi_logo from "../../assets/digi_logo.png";
 import Person2Icon from "@mui/icons-material/Person2";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import { Chip } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -50,6 +51,8 @@ function NavBar(props) {
   const submit = useSubmit();
   const token = useRouteLoaderData("root");
   var decoded = jwt_decode(token);
+  const initials = `${decoded.fname[0]} ${decoded.lname[0]}`;
+  const profileName = initials.toUpperCase();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -93,7 +96,9 @@ function NavBar(props) {
               display: "flex",
               alignItems: "center",
             }}
-          > VideoSrch
+          >
+            {" "}
+            VideoSrch
             <CenteredImage
               src={digi_logo}
               alt="Digital Logo"
@@ -112,7 +117,13 @@ function NavBar(props) {
               aria-haspopup="true"
               color="inherit"
             >
-              <AccountCircle />
+              <Chip
+                sx={{ color: "white", fontWeight: 600 }}
+                avatar={<AccountCircle />}
+                label={profileName}
+                variant="outlined"
+              />
+              {/* <AccountCircle></AccountCircle> */}
             </IconButton>
 
             <Menu
@@ -128,6 +139,14 @@ function NavBar(props) {
               }}
               open={Boolean(anchorEl)}
               onClose={handleClose}
+
+              
+              style={{
+                borderRadius: "0 0 4px 4px", // To make the top-right edge sharp
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Add a shadow for an official look
+                transition: "transform 0.3s ease", // Add smooth transition
+                transformOrigin: "top right", // Set the transform origin to the top-right corner
+              }}
             >
               <Link to={`/${decoded.id}`} style={{ textDecoration: "none" }}>
                 <ListItem button onClick={handleClose}>

@@ -54,7 +54,7 @@ export const secondaryListItems = (
     {/* <ListSubheader component="div" inset>
       Help
     </ListSubheader> */}
-    <NavLink to="/about-us">
+    {/* <NavLink to="/about-us">
       <ListItemButton>
         <ListItemIcon>
           <Tooltip title="About Us" placement="right" arrow>
@@ -63,17 +63,17 @@ export const secondaryListItems = (
         </ListItemIcon>
         <ListItemText primary="About Us" />
       </ListItemButton>
-    </NavLink>
-    <NavLink to="/settings">
+    </NavLink> */}
+    {/* <NavLink to="/settings">
       <ListItemButton>
-        <ListItemIcon>
+        <ListItemIcon>  
           <Tooltip title="App Settings" placement="right" arrow>
             <AdminPanelSettingsIcon />
           </Tooltip>
         </ListItemIcon>
         <ListItemText primary="App Settings" />
       </ListItemButton>
-    </NavLink>
+    </NavLink> */}
     <NavLink to="/users">
       <ListItemButton>
         <ListItemIcon>
