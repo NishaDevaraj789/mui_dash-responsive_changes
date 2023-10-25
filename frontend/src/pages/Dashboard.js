@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Typography,
-  Tooltip,
-  Card,
-  Grid,
-  Stack,
-  CardHeader,
-  CardContent,
-  Box,
-} from "@mui/material";
+import { Typography, Card, Grid, CardContent, Box } from "@mui/material";
 import BarsDataset from "../components/charts/BarChart";
 import PieActiveArc from "../components/charts/PieChart";
 import Title from "../components/Title";
@@ -20,176 +11,172 @@ function Dashboard() {
     <Grid container spacing={4}>
       <Grid item xs={12} md={3}>
         {/* card1 */}
-      <Card  
-        variant="outlined"
-        style={{
-          backgroundColor: "#FFFFFF", // White background
-          borderTop: "4px solid #48CFAD", // Top border in green
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
-          borderRadius: "8px", // Rounded corners
-        }}
-      >
-        <CardContent>
-          <Typography
-            variant="subtitle2"
-            style={{
-              color: "#333", // Dark gray title color
-              fontSize: "18px",
-            }}
-          >
-            No of queries
-          </Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+        <Card
+          variant="outlined"
+          style={{
+            backgroundColor: "#FFFFFF", // White background
+            borderTop: "4px solid #48CFAD", // Top border in green
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            borderRadius: "8px", // Rounded corners
+          }}
+        >
+          <CardContent>
             <Typography
-              variant="h4"
+              variant="subtitle2"
               style={{
-                color: "#48CFAD", // green
-                fontSize: "32px",
-                fontWeight: "bold",
+                color: "#333", // Dark gray title color
+                fontSize: "18px",
               }}
             >
-              10,011
+              No of queries
             </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-      {/* card2 */}
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Typography
+                variant="h4"
+                style={{
+                  color: "#48CFAD", // green
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                }}
+              >
+                10,011
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+        {/* card2 */}
       </Grid>
       <Grid item xs={12} md={3}>
-      <Card
-        variant="outlined"
-        style={{
-          backgroundColor: "#FFFFFF", // White background
-          borderTop: "4px solid #FED730", // Top border in yellow
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
-          borderRadius: "8px", // Rounded corners
-        }}
-      >
-        <CardContent>
-          <Typography
-            variant="subtitle2"
-            style={{
-              color: "#333", // Dark gray title color
-              fontSize: "18px",
-            }}
-          >
-            No. of queries answered
-          </Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+        <Card
+          variant="outlined"
+          style={{
+            backgroundColor: "#FFFFFF", // White background
+            borderTop: "4px solid #FED730", // Top border in yellow
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            borderRadius: "8px", // Rounded corners
+          }}
+        >
+          <CardContent>
             <Typography
-              variant="h4"
+              variant="subtitle2"
               style={{
-                color: "#FED330", // Dark yellow
-                fontSize: "32px",
-                fontWeight: "bold",
+                color: "#333", // Dark gray title color
+                fontSize: "18px",
               }}
             >
-              9899
+              No. of queries answered
             </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-      {/* card3 */}
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Typography
+                variant="h4"
+                style={{
+                  color: "#FED330", // Dark yellow
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                }}
+              >
+                9899
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+        {/* card3 */}
       </Grid>
       <Grid item xs={12} md={3}>
-      <Card
-        variant="outlined"
-        style={{
-          backgroundColor: "#FFFFFF", // White background
-          borderTop: "4px solid #FA8231", // Top border in orange
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
-          borderRadius: "8px", // Rounded corners
-        }}
-      >
-        <CardContent>
-          <Typography
-            variant="subtitle2"
-            style={{
-              color: "#333", // Dark gray title color
-              fontSize: "18px",
-            }}
-          >
-            No. of queries unanswered
-          </Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+        <Card
+          variant="outlined"
+          style={{
+            backgroundColor: "#FFFFFF", // White background
+            borderTop: "4px solid #FA8231", // Top border in orange
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            borderRadius: "8px", // Rounded corners
+          }}
+        >
+          <CardContent>
             <Typography
-              variant="h4"
+              variant="subtitle2"
               style={{
-                color: "#FA8231", // orange
-                fontSize: "32px",
-                fontWeight: "bold",
+                color: "#333", // Dark gray title color
+                fontSize: "18px",
               }}
             >
-              221
+              No. of queries unanswered
             </Typography>
-          </Box>
-        </CardContent>
-      </Card>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Typography
+                variant="h4"
+                style={{
+                  color: "#FA8231", // orange
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                }}
+              >
+                221
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
       </Grid>
       {/* card4 */}
       <Grid item xs={12} md={3}>
-      <Card
-        variant="outlined"
-        style={{
-          backgroundColor: "#FFFFFF", // White background
-          borderTop: "4px solid #4FC1E9", // Top border in Dark Royal Blue
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
-          borderRadius: "8px", // Rounded corners
-          transition: "transform 0.2s",
-          "&:hover": {
-            transform: "scale(1.05)", }// Zoom-in effect on hover
-        }}
-      >
-        <CardContent>
-          <Typography
-            variant="subtitle2"
-            style={{
-              color: "#333", // Dark gray title color
-              fontSize: "18px",
-            }}
-          >
-            Videos Uploaded
-          </Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+        <Card
+          variant="outlined"
+          style={{
+            backgroundColor: "#FFFFFF", // White background
+            borderTop: "4px solid #4FC1E9", // Top border in Dark Royal Blue
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Subtle shadow
+            borderRadius: "8px", // Rounded corners
+            transition: "transform 0.2s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            }, // Zoom-in effect on hover
+          }}
+        >
+          <CardContent>
             <Typography
-              variant="h4"
+              variant="subtitle2"
               style={{
-                color: "#4FC1E9", // Dark Royal Blue number color
-                fontSize: "32px",
-                fontWeight: "bold",
+                color: "#333", // Dark gray title color
+                fontSize: "18px",
               }}
             >
-              789
+              Videos Uploaded
             </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-    </Grid>
-      {/* <Grid item xs={12} md={3}>
-        <Card>
-          <CardHeader title="No. of queries answered" subheader="989" />
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-end"
+            >
+              <Typography
+                variant="h4"
+                style={{
+                  color: "#4FC1E9", // Dark Royal Blue number color
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                }}
+              >
+                789
+              </Typography>
+            </Box>
+          </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} md={3}>
-        <Card>
-          <CardHeader
-            title="No. of queries unanswered "
-            subheader="Subtitle or additional information"
-          />
-        </Card>
-      </Grid>
-
-      <Grid item xs={12} md={3}>
-        <Card>
-          <CardHeader
-            title="No. of queries unanswered "
-            subheader="Subtitle or additional information"
-          />
-        </Card>
-      </Grid> */}
-
-
-      {/* graphs starts */}
+      
+      
+          {/* Graph starts */}
+   
       <Grid item xs={12} sm={8}>
         <Card
           sx={{

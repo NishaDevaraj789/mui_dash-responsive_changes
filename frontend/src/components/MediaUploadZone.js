@@ -162,13 +162,26 @@ const MediaUploadZone = ({ stepIndex, sendDataToParent }) => {
             <h3>Drag & drop audio or video files here</h3>
             <br />
             <div>
-              <input
-                type="file"
-                accept="audio/*, video/*"
-                onChange={handleFileInput}
-                multiple
-              />
-            </div>
+  <input
+    type="file"
+    accept="audio/*, video/*"
+    onChange={handleFileInput}
+    multiple
+    style={{
+      width: "100%", // Make the input full width
+      padding: "10px", // Add some padding for better mobile usability
+      border: "1px solid #ccc", // Add a border for clarity
+      borderRadius: "5px", // Add rounded corners
+      marginBottom: "10px", // Add spacing between the input and other elements
+      // Responsive adjustments
+      "@media (max-width: 600px)": {
+        padding: "5px", // Reduce padding on smaller screens
+        marginBottom: "5px", // Reduce spacing on smaller screens
+      },
+    }}
+  />
+</div>
+
           </div>
 
           {selectedFiles.length > 0 ? (

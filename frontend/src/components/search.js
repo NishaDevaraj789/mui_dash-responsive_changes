@@ -45,6 +45,10 @@ const Container = styled("div")({
   borderRadius: "15px",
   minWidth: "400px",
   background: "white", // White background for the container
+  // Responsive adjustments
+  "@media (max-width: 320px)": {
+    minWidth: "300px", // Adjust the minimum width for smaller screens
+  },
 });
 
 function Search() {
@@ -65,6 +69,15 @@ function Search() {
             fullWidth
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            sx={{
+              // Responsive adjustments
+              "@media (max-width: 375px)": {
+                width: "100%",
+                // p: 2,
+          // mb: 2,
+                 // Make the text field full width on smaller screens
+              },
+            }}
           />
           <StyledIconButton onClick={handleSearch} color="primary">
             <SearchIcon />
