@@ -45,8 +45,8 @@ function SignUp() {
             padding: "2rem",
             // Adjust width and padding for mobile screens
             "@media (max-width: 600px)": {
-              width: "100%",
-              padding: "1rem",
+              width: "10px", // Set a smaller width for mobile screens
+              padding: "0",
             },
           }}
         >
@@ -59,9 +59,17 @@ function SignUp() {
               maxWidth: "300px", // Limit the maximum width of the image
               borderRadius: "20px", // Add border radius to the image
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Add a subtle shadow
+              "@media (max-width: 600px)": {
+                width: "10%", // Make the image take the full width on mobile screens
+                maxWidth: "8%", // Remove the maximum width for mobile screens
+                borderRadius: "10px", // Reduce border radius for mobile screens
+              },
             }}
           />
-          <Typography variant="h4" component="div" mt={2} sx={{ fontSize: "18px" }}>
+          <Typography variant="h4" component="div" mt={2} sx={{ fontSize: "18px",
+        "@media (max-width: 600px)": {
+          fontSize: "10px", // Set a smaller font size for mobile screens
+        }, }}>
             VideoSrch
           </Typography>
         </Grid>

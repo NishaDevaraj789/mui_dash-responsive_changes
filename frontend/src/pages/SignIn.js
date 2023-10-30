@@ -132,13 +132,13 @@ function SignIn() {
       image={bot_logo}
       alt="Paella dish"
       sx={{
-        width: "20%", // Adjust the image size for mobile screens
+        width: "40%", // Adjust the image size for mobile screens
         margin: "auto",
         paddingTop: "5%",
         paddingBottom: "2%",
         // Responsive adjustments for mobile screens
         "@media (max-width: 600px)": {
-          width: "10%", // Set a larger image size for mobile screens
+          width: "20%", // Set a larger image size for mobile screens
         },
       }}
     />

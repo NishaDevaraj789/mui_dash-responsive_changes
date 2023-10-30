@@ -13,18 +13,40 @@ const xLabels = [
   'Page G',
 ];
 
-export default function BasicLineChart() {
+export default function DashedLineChart() {
+  const isMobile = window.innerWidth <= 320; // Adjust the breakpoint for 320px width
+
   return (
     <LineChart
-    width={500}
-    height={240}
-    series={[
-      { data: pData, label: 'pv', yAxisKey: 'leftAxisId' },
-      { data: uData, label: 'uv', yAxisKey: 'rightAxisId' },
-    ]}
-    xAxis={[{ scaleType: 'point', data: xLabels }]}
-    yAxis={[{ id: 'leftAxisId' }, { id: 'rightAxisId' }]}
-    rightAxis="rightAxisId"
+      width={isMobile ? 280 : 500} // Adjust the width for 320px mobile
+      height={isMobile ? 160 : 240} // Adjust the height for 320px mobile
+      series={[
+        { data: pData, label: 'pv', id: 'pvId' },
+        { data: uData, label: 'uv', id: 'uvId' },
+      ]}
+      xAxis={[
+        {
+          scaleType: 'point',
+          data: xLabels.slice(0, isMobile ? 3 : xLabels.length), // Adjust the labels for 320px mobile
+        },
+      ]}
+      sx={{
+        '.MuiLineElement-root, .MuiMarkElement-root': {
+          strokeWidth: 1,
+        },
+        '.MuiLineElement-series-pvId': {
+          strokeDasharray: '5 5',
+        },
+        '.MuiLineElement-series-uvId': {
+          strokeDasharray: '3 4 5 2',
+        },
+        '.MuiMarkElement-root:not(.MuiMarkElement-highlighted)': {
+          fill: '#fff',
+        },
+        '& .MuiMarkElement-highlighted': {
+          stroke: 'none',
+        },
+      }}
     />
   );
 }

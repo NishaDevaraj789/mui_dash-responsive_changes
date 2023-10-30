@@ -177,23 +177,24 @@ function Dashboard() {
       
           {/* Graph starts */}
    
-      <Grid item xs={12} sm={8}>
-        <Card
-          sx={{
-            padding: "16px",
-            borderRadius: "10px",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            transition: "transform 0.2s",
-            "&:hover": {
-              transform: "scale(1.05)",
-            },
-          }}
-        >
-          <Title color="primary">Top cities</Title>
-          <BarsDataset />
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={6}>
+  <Card
+    sx={{
+      padding: "16px",
+      borderRadius: "10px",
+      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+      transition: "transform 0.2s",
+      "&:hover": {
+        transform: "scale(1.05)",
+      },
+    }}
+  >
+    <Title color="primary">UnGrouped</Title>
+    <BarsDataset />
+  </Card>
+</Grid>
+
+      <Grid item xs={12} sm={6}>
         <Card
           sx={{
             padding: "16px",

@@ -152,3 +152,7 @@ a.active {
 .css-1y4v7ra-MuiCardContent-root:last-child {
   padding-bottom: 0 !important;
 }
+
+/* .MuiChartsLegend-root.MuiChartsLegend-column.css-1u0lry5-MuiChartsLegend-root {
+  display: none !important;
+} */
